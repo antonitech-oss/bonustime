@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg:       #0f172a;
+  --surface:  #1e293b;
+  --surface2: #273549;
+  --border:   rgba(255,255,255,0.08);
+  --text:     #f1f5f9;
+  --muted:    #94a3b8;
+  --violet:   #8b5cf6;
+  --violet-d: #7c3aed;
+  --violet-l: #a78bfa;
+  --teal:     #2dd4bf;
+  --amber:    #f59e0b;
+  --red:      #f87171;
+}
+
+* { box-sizing: border-box; }
+html, body { padding: 0; margin: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 6px; }
+
+@layer components {
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card:hover {
+    border-color: rgba(139,92,246,0.35);
+    box-shadow: 0 8px 24px rgba(139,92,246,0.08);
+  }
+  .card-static { transition: none; }
+  .card-static:hover {
+    border-color: var(--border);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  }
+  .label-tiny {
+    @apply uppercase tracking-widest font-semibold;
+    color: var(--muted);
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 10px;
+  }
+  .page-title {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-lg px-4 font-semibold transition-all;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    font-size: 13px;
+    font-family: "Space Grotesk", sans-serif;
+  }
+  .btn-lime {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(139,92,246,0.35);
+  }
+  .btn-lime:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(139,92,246,0.5);
+  }
+  .btn-ghost {
+    background: var(--surface2);
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .btn-ghost:hover { border-color: rgba(139,92,246,0.3); }
+  .btn-danger {
+    background: rgba(248,113,113,0.10);
+    color: var(--red);
+  }
+  .btn-danger:hover { background: rgba(248,113,113,0.20); }
+  .input {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 9px 14px;
+    color: var(--text);
+    font-size: 13px;
+    outline: none;
+    font-family: "Inter", sans-serif;
+    transition: border-color 0.18s;
+  }
+  .input::placeholder { color: var(--muted); }
+  .input:focus { border-color: rgba(139,92,246,0.5); }
+  .pill {
+    @apply inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium;
+  }
+}
+
+/* CSS var overrides for Tailwind classes */
+.bg-bg-card    { background: var(--surface) !important; }
+.bg-bg-sidebar { background: var(--surface) !important; }
+.bg-bg-primary { background: var(--bg) !important; }
+.bg-bg-hover   { background: var(--surface2) !important; }
+.bg-bg-deep    { background: var(--surface2) !important; }
+.border-bord   { border-color: rgba(255,255,255,0.08) !important; }
+.text-txt-primary   { color: var(--text) !important; }
+.text-txt-secondary { color: var(--muted) !important; }
+.text-lime  { color: var(--teal) !important; }
+.bg-lime    { background: var(--teal) !important; }
+.text-violet { color: var(--violet-l) !important; }
+.bg-violet   { background: var(--violet) !important; }
+
+.num-giant {
+  font-size: 48px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  font-family: "Space Grotesk", sans-serif;
+}
+@media (max-width: 640px) { .num-giant { font-size: 36px; } }
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
+input[type="number"] { -moz-appearance: textfield; }
